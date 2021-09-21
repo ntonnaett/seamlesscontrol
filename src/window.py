@@ -61,21 +61,17 @@ class SeamlesscontrolWindow(Gtk.ApplicationWindow):
     @Gtk.Template.Callback("trailer_button_clicked")
     def on_trailer_clicked(self, button):
         print('Trailer!')
-        self.on_pause_clicked(button)
         self.showcontrol.send_message(b'/showcontrol/track', [0])
 
     @Gtk.Template.Callback("brunnen_button_clicked")
     def on_brunnen_clicked(self, button):
-        self.on_pause_clicked(button)
         self.showcontrol.send_message(b'/showcontrol/track', [1])
 
     @Gtk.Template.Callback("sufi_button_clicked")
     def on_sufi_clicked(self, button):
-        self.on_pause_clicked(button)
         self.showcontrol.send_message(b'/showcontrol/track', [2])
 
     @Gtk.Template.Callback("oksus_button_clicked")
     def on_oksus_clicked(self, button):
-        self.on_pause_clicked(button)
         self.showcontrol.send_message(b'/showcontrol/track', [3])
 
