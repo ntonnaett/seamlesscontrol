@@ -4,18 +4,51 @@
   <requires lib="gtk+" version="3.24"/>
   <template class="SeamlesscontrolWindow" parent="GtkApplicationWindow">
     <property name="can-focus">False</property>
-    <property name="default-width">600</property>
     <property name="default-height">300</property>
     <child>
-      <object class="GtkToggleButton" id="pause_button">
-        <property name="label">gtk-media-pause</property>
+      <object class="GtkBox">
         <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="use-stock">True</property>
-        <property name="always-show-image">True</property>
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkButton" id="pause_button">
+            <property name="label" translatable="yes">Pause</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="valign">center</property>
+            <property name="margin-start">10</property>
+            <property name="margin-end">10</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
+            <style>
+              <class name="destructive-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="resume_button">
+            <property name="label" translatable="yes">Resume for next piece</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="valign">center</property>
+            <property name="margin-start">10</property>
+            <property name="margin-end">10</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
       </object>
     </child>
     <child type="titlebar">

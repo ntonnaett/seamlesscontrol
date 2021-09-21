@@ -23,16 +23,18 @@ class SeamlesscontrolWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'SeamlesscontrolWindow'
 
     pause_button = Gtk.Template.Child()
+    resume_button = Gtk.Template.Child()
     showcontrol = OSCClient('localhost', 9000)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.pause_button.connect("toggled", self.on_pause_toggled, 'pause')
+        self.pause_button.connect("clicked", self.on_pause_clicked, 'pause')
+        self.resume_button.connect("clicked", self.on_resume_clicked, 'resume')
 
-    def on_pause_toggled(self, button, name):
-        if button.get_active():
-            print('Paused!')
-            self.showcontrol.send_message(b'/pause', [1])
-        else:
-            print('Resumed!')
-            self.showcontrol.send_message(b'/pause', [0])
+    def on_pause_clicked(self, button, name):
+        print('Paused!')
+        self.showcontrol.send_message(b'/pause', [1])
+
+    def on_resume_clicked(self, button, name):
+        print('Resumed!')
+        self.showcontrol.send_message(b'/pause', [0])
