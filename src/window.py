@@ -34,10 +34,10 @@ class SeamlesscontrolWindow(Gtk.ApplicationWindow):
 
     def on_pause_clicked(self, button, name):
         print('Paused!')
-        self.showcontrol.send_message(b'/pause', [1])
+        self.showcontrol.send_message(b'/showcontrol/pause', [1])
         self.status_label.set_text('Status: Paused!')
 
     def on_resume_clicked(self, button, name):
         print('Resumed!')
-        self.showcontrol.send_message(b'/pause', [0])
+        self.showcontrol.send_message(b'/showcontrol/pause', [0])
         self.status_label.set_text('Status: Playing!')
