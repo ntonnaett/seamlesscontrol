@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=seamlesscontrol
+Exec=seamlesscontrol
+Icon=org.seamless.SeamlessControl
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
