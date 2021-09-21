@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/org/seamless/SeamlessControl">
     <file>window.ui</file>
+    <file>style.css</file>
   </gresource>
 </gresources>

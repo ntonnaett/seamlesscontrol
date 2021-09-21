@@ -26,11 +26,17 @@ class SeamlesscontrolWindow(Gtk.ApplicationWindow):
     resume_button = Gtk.Template.Child()
     status_label = Gtk.Template.Child()
     showcontrol = OSCClient('localhost', 9000)
-
+    cssProvider = Gtk.CssProvider()
+    css = '''
+    GtkButton {font-size: 30;
+    background: #00ff00;
+    }
+    '''
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.pause_button.connect("clicked", self.on_pause_clicked, 'pause')
         self.resume_button.connect("clicked", self.on_resume_clicked, 'resume')
+        self.cssProvider.load_from_resource(resource_path='/org/seamless/SeamlessControl/style.css')
 
     def on_pause_clicked(self, button, name):
         print('Paused!')
