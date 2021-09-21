@@ -22,28 +22,60 @@ from oscpy.client import OSCClient
 class SeamlesscontrolWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'SeamlesscontrolWindow'
 
-    pause_button = Gtk.Template.Child()
-    resume_button = Gtk.Template.Child()
-    status_label = Gtk.Template.Child()
+    pause_button = Gtk.Template.Child('pause_button')
+    resume_button = Gtk.Template.Child('resume_button')
+    status_label = Gtk.Template.Child('status_label')
+
+    trailer_button = Gtk.Template.Child('trailer_button')
+    brunnen_button = Gtk.Template.Child('brunnen_button')
+    sufi_button = Gtk.Template.Child('sufi_button')
+    oksus_button = Gtk.Template.Child('oksus_button')
+
     showcontrol = OSCClient('localhost', 9000)
     cssProvider = Gtk.CssProvider()
-    css = '''
-    GtkButton {font-size: 30;
-    background: #00ff00;
-    }
-    '''
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.pause_button.connect("clicked", self.on_pause_clicked, 'pause')
-        self.resume_button.connect("clicked", self.on_resume_clicked, 'resume')
+        #self.pause_button.connect("clicked", self.on_pause_clicked, 'pause')
+        # self.resume_button.connect("clicked", self.on_resume_clicked, 'resume')
+
+        # self.trailer_button.connect("clicked", self.on_trailer_clicked, 'trailer')
+        # self.brunnen_button.connect("clicked", self.on_brunnen_clicked, 'brunnen')
+        # self.sufi_button.connect("clicked", self.on_sufi_clicked, 'sufi')
+        # self.oksus_button.connect("clicked", self.on_oksus_clicked, 'oksus')
+
         self.cssProvider.load_from_resource(resource_path='/org/seamless/SeamlessControl/style.css')
 
-    def on_pause_clicked(self, button, name):
+    @Gtk.Template.Callback("pause_button_clicked")
+    def on_pause_clicked(self, button):
         print('Paused!')
         self.showcontrol.send_message(b'/showcontrol/pause', [1])
         self.status_label.set_text('Status: Paused!')
 
-    def on_resume_clicked(self, button, name):
+    @Gtk.Template.Callback("resume_button_clicked")
+    def on_resume_clicked(self, button):
         print('Resumed!')
         self.showcontrol.send_message(b'/showcontrol/pause', [0])
         self.status_label.set_text('Status: Playing!')
+
+    @Gtk.Template.Callback("trailer_button_clicked")
+    def on_trailer_clicked(self, button):
+        print('Trailer!')
+        self.on_pause_clicked(button)
+        self.showcontrol.send_message(b'/showcontrol/track', [0])
+
+    @Gtk.Template.Callback("brunnen_button_clicked")
+    def on_brunnen_clicked(self, button):
+        self.on_pause_clicked(button)
+        self.showcontrol.send_message(b'/showcontrol/track', [1])
+
+    @Gtk.Template.Callback("sufi_button_clicked")
+    def on_sufi_clicked(self, button):
+        self.on_pause_clicked(button)
+        self.showcontrol.send_message(b'/showcontrol/track', [2])
+
+    @Gtk.Template.Callback("oksus_button_clicked")
+    def on_oksus_clicked(self, button):
+        self.on_pause_clicked(button)
+        self.showcontrol.send_message(b'/showcontrol/track', [3])
+
