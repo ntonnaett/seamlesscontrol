@@ -22,27 +22,13 @@ from oscpy.client import OSCClient
 class SeamlesscontrolWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'SeamlesscontrolWindow'
 
-    pause_button = Gtk.Template.Child('pause_button')
-    resume_button = Gtk.Template.Child('resume_button')
     status_label = Gtk.Template.Child('status_label')
-
-    trailer_button = Gtk.Template.Child('trailer_button')
-    brunnen_button = Gtk.Template.Child('brunnen_button')
-    sufi_button = Gtk.Template.Child('sufi_button')
-    oksus_button = Gtk.Template.Child('oksus_button')
 
     showcontrol = OSCClient('localhost', 9000)
     cssProvider = Gtk.CssProvider()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        #self.pause_button.connect("clicked", self.on_pause_clicked, 'pause')
-        # self.resume_button.connect("clicked", self.on_resume_clicked, 'resume')
-
-        # self.trailer_button.connect("clicked", self.on_trailer_clicked, 'trailer')
-        # self.brunnen_button.connect("clicked", self.on_brunnen_clicked, 'brunnen')
-        # self.sufi_button.connect("clicked", self.on_sufi_clicked, 'sufi')
-        # self.oksus_button.connect("clicked", self.on_oksus_clicked, 'oksus')
 
         self.cssProvider.load_from_resource(resource_path='/org/seamless/SeamlessControl/style.css')
 
