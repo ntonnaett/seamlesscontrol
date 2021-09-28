@@ -47,7 +47,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="label" translatable="yes">Press this button to stop the program immediatly (audio and video). The schedule will be suspended.</property>
+                    <property name="label" translatable="yes">Press this button to stop the program immediately (audio and video). The schedule will be suspended.</property>
                     <property name="wrap">True</property>
                   </object>
                   <packing>
