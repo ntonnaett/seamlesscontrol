@@ -1,4 +1,8 @@
-GtkButton {
+.GtkButton {
     font-size: 30px;
     background: #00ff00;
+}
+
+#trackbox {
+  background: #ff00ff;
 }
