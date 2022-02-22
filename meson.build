@@ -12,5 +12,6 @@ i18n = import('i18n')
 subdir('data')
 subdir('src')
 subdir('po')
+install_subdir('systemd', install_dir: '/usr/lib/systemd/user/')
 
 meson.add_install_script('build-aux/meson/postinstall.py')
