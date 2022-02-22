@@ -61,3 +61,7 @@ class SeamlesscontrolWindow(Gtk.ApplicationWindow):
     def on_oksus_clicked(self, button):
         self.showcontrol.send_message(b'/showcontrol/track', [3])
 
+    @Gtk.Template.Callback("datenerhebung_button_clicked")
+    def on_datenerhebung_clicked(self, button):
+        self.showcontrol.send_message(b'/showcontrol/track', [4])
+
