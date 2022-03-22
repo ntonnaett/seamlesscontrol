@@ -1,0 +1,14 @@
+[Unit]
+Description=Seamless Control Web
+After=network-online.target broadwayd.service
+Wants=network-online.target broadwayd.service
+
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=simple
+PrivateTmp=true
+Environment="GDK_BACKEND=broadway"
+ExecStart=seamlesscontrol
+Restart=always
